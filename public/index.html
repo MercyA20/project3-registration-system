@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Registration System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🌸 Student Registration System 🌸</h1>
+
+        <p>Full Stack Web Development Project 3</p>
+    </header>
+
+    <nav>
+        <button type="button" onclick="showSection('welcome')">
+            🏠 Home
+        </button>
+
+        <button type="button" onclick="showSection('students')">
+            👩‍🎓 Students
+        </button>
+
+        <button type="button" onclick="showSection('courses')">
+            📚 Courses
+        </button>
+
+        <button type="button" onclick="showSection('faculty')">
+            👨‍🏫 Faculty
+        </button>
+
+        <button type="button" onclick="showSection('sections')">
+            🏫 Sections
+        </button>
+
+        <button type="button" onclick="showSection('enrollments')">
+            📝 Enrollments
+        </button>
+    </nav>
+
+    <main>
+
+        <!-- Welcome -->
+
+        <section id="welcome">
+            <h2>Welcome!</h2>
+
+            <p>
+                Welcome to the Student Registration System.
+            </p>
+
+            <p>
+                Use the navigation buttons above to manage:
+            </p>
+
+            <ul>
+                <li>Students</li>
+                <li>Courses</li>
+                <li>Faculty</li>
+                <li>Sections</li>
+                <li>Enrollments</li>
+            </ul>
+        </section>
+
+        <!-- Students -->
+
+        <section id="students" class="hidden">
+            <div class="section-heading">
+                <h2>👩‍🎓 Students</h2>
+
+                <button
+                    type="button"
+                    onclick="showStudentForm()"
+                >
+                    Add Student
+                </button>
+            </div>
+
+            <form id="studentForm" class="hidden">
+                <h3 id="studentFormTitle">Add Student</h3>
+
+                <input
+                    type="hidden"
+                    id="studentId"
+                >
+
+                <label for="studentFirstName">
+                    First Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentFirstName"
+                    placeholder="Enter first name"
+                    required
+                >
+
+                <label for="studentLastName">
+                    Last Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentLastName"
+                    placeholder="Enter last name"
+                    required
+                >
+
+                <label for="studentEmail">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="studentEmail"
+                    placeholder="Enter email address"
+                    required
+                >
+
+                <label for="studentMajor">
+                    Major
+                </label>
+
+                <input
+                    type="text"
+                    id="studentMajor"
+                    placeholder="Enter major"
+                    required
+                >
+
+                <div class="form-buttons">
+                    <button type="submit">
+                        Save Student
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="hideStudentForm()"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <p id="studentMessage" class="message"></p>
+
+            <div id="studentTable"></div>
+        </section>
+
+        <!-- Courses -->
+
+        <section id="courses" class="hidden">
+            <div class="section-heading">
+                <h2>📚 Courses</h2>
+
+                <button
+                    type="button"
+                    onclick="showCourseForm()"
+                >
+                    Add Course
+                </button>
+            </div>
+
+            <form id="courseForm" class="hidden">
+                <h3 id="courseFormTitle">Add Course</h3>
+
+                <input
+                    type="hidden"
+                    id="courseId"
+                >
+
+                <label for="courseCode">
+                    Course Code
+                </label>
+
+                <input
+                    type="text"
+                    id="courseCode"
+                    placeholder="Example: CIS1512"
+                    required
+                >
+
+                <label for="courseName">
+                    Course Name
+                </label>
+
+                <input
+                    type="text"
+                    id="courseName"
+                    placeholder="Enter course name"
+                    required
+                >
+
+                <label for="courseDepartment">
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="courseDepartment"
+                    placeholder="Enter department"
+                    required
+                >
+
+                <label for="courseCredits">
+                    Credits
+                </label>
+
+                <input
+                    type="number"
+                    id="courseCredits"
+                    min="1"
+                    max="6"
+                    placeholder="Enter number of credits"
+                    required
+                >
+
+                <div class="form-buttons">
+                    <button type="submit">
+                        Save Course
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="hideCourseForm()"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <p id="courseMessage" class="message"></p>
+
+            <div id="courseTable"></div>
+        </section>
+
+        <!-- Faculty -->
+
+        <section id="faculty" class="hidden">
+            <div class="section-heading">
+                <h2>👨‍🏫 Faculty</h2>
+
+                <button
+                    type="button"
+                    onclick="showFacultyForm()"
+                >
+                    Add Faculty
+                </button>
+            </div>
+
+            <form id="facultyForm" class="hidden">
+                <h3 id="facultyFormTitle">Add Faculty</h3>
+
+                <input
+                    type="hidden"
+                    id="facultyId"
+                >
+
+                <label for="facultyFirstName">
+                    First Name
+                </label>
+
+                <input
+                    type="text"
+                    id="facultyFirstName"
+                    placeholder="Enter first name"
+                    required
+                >
+
+                <label for="facultyLastName">
+                    Last Name
+                </label>
+
+                <input
+                    type="text"
+                    id="facultyLastName"
+                    placeholder="Enter last name"
+                    required
+                >
+
+                <label for="facultyEmail">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="facultyEmail"
+                    placeholder="Enter email address"
+                    required
+                >
+
+                <label for="facultyDepartment">
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="facultyDepartment"
+                    placeholder="Enter department"
+                    required
+                >
+
+                <div class="form-buttons">
+                    <button type="submit">
+                        Save Faculty
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="hideFacultyForm()"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <p id="facultyMessage" class="message"></p>
+
+            <div id="facultyTable"></div>
+        </section>
+
+        <!-- Sections -->
+
+        <section id="sections" class="hidden">
+            <div class="section-heading">
+                <h2>🏫 Sections</h2>
+
+                <button
+                    type="button"
+                    onclick="showSectionForm()"
+                >
+                    Add Section
+                </button>
+            </div>
+
+            <form id="sectionForm" class="hidden">
+                <h3 id="sectionFormTitle">Add Section</h3>
+
+                <input
+                    type="hidden"
+                    id="sectionId"
+                >
+
+                <label for="sectionNumber">
+                    Section Number
+                </label>
+
+                <input
+                    type="text"
+                    id="sectionNumber"
+                    placeholder="Example: 001"
+                    required
+                >
+
+                <label for="sectionCourseId">
+                    Course
+                </label>
+
+                <select id="sectionCourseId" required>
+                    <option value="">
+                        Select a course
+                    </option>
+                </select>
+
+                <label for="sectionFacultyId">
+                    Faculty
+                </label>
+
+                <select id="sectionFacultyId" required>
+                    <option value="">
+                        Select a faculty member
+                    </option>
+                </select>
+
+                <label for="sectionSemester">
+                    Semester
+                </label>
+
+                <select id="sectionSemester" required>
+                    <option value="">
+                        Select a semester
+                    </option>
+
+                    <option value="Winter">
+                        Winter
+                    </option>
+
+                    <option value="Spring">
+                        Spring
+                    </option>
+
+                    <option value="Summer">
+                        Summer
+                    </option>
+
+                    <option value="Fall">
+                        Fall
+                    </option>
+                </select>
+
+                <label for="sectionYear">
+                    Year
+                </label>
+
+                <input
+                    type="number"
+                    id="sectionYear"
+                    min="2000"
+                    max="2100"
+                    placeholder="Example: 2026"
+                    required
+                >
+
+                <label for="sectionRoom">
+                    Room
+                </label>
+
+                <input
+                    type="text"
+                    id="sectionRoom"
+                    placeholder="Example: G-101"
+                    required
+                >
+
+                <div class="form-buttons">
+                    <button type="submit">
+                        Save Section
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="hideSectionForm()"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <p id="sectionMessage" class="message"></p>
+
+            <div id="sectionTable"></div>
+        </section>
+
+        <!-- Enrollments -->
+
+        <section id="enrollments" class="hidden">
+            <div class="section-heading">
+                <h2>📝 Enrollments</h2>
+
+                <button
+                    type="button"
+                    onclick="showEnrollmentForm()"
+                >
+                    Add Enrollment
+                </button>
+            </div>
+
+            <form id="enrollmentForm" class="hidden">
+                <h3 id="enrollmentFormTitle">
+                    Add Enrollment
+                </h3>
+
+                <input
+                    type="hidden"
+                    id="enrollmentId"
+                >
+
+                <label for="enrollmentStudentId">
+                    Student
+                </label>
+
+                <select id="enrollmentStudentId" required>
+                    <option value="">
+                        Select a student
+                    </option>
+                </select>
+
+                <label for="enrollmentSectionId">
+                    Section
+                </label>
+
+                <select id="enrollmentSectionId" required>
+                    <option value="">
+                        Select a section
+                    </option>
+                </select>
+
+                <label for="enrollmentStatus">
+                    Status
+                </label>
+
+                <select id="enrollmentStatus" required>
+                    <option value="Enrolled">
+                        Enrolled
+                    </option>
+
+                    <option value="Dropped">
+                        Dropped
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+                </select>
+
+                <div class="form-buttons">
+                    <button type="submit">
+                        Save Enrollment
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="hideEnrollmentForm()"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <p id="enrollmentMessage" class="message"></p>
+
+            <div id="enrollmentTable"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            Student Registration System — Project 3
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
